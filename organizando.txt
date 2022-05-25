@@ -1,0 +1,9 @@
+Favorites: 0
+Purchased: 1
+To Read: 2
+Reading Now: 3
+Have Read: 4
+Reviewed: 5
+Recently Viewed: 6
+My eBooks: 7
+Books For You: 8
