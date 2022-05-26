@@ -1,0 +1,43 @@
+.header__book__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(220, 220, 220);
+  text-align: center;
+}
+
+.section__book__container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.article__book__box {
+  display: flex;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 10px;
+  margin: 1vw;
+  padding: 10px;
+  background: rgb(255, 255, 255);
+}
+
+.article__book__info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.article__book__info button {
+  border: none;
+  border-radius: 10px;
+  font-size: 2vw;
+  background: rgb(26, 26, 238);
+  color: rgb(255, 255, 255);
+  opacity: 0.5;
+}
+
+.article__book__info button:hover {
+  opacity: 1;
+  cursor: pointer;
+}

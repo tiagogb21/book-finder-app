@@ -1,11 +1,15 @@
 import React from "react";
 
-import Home from "./components/home/Home";
+import { Provider } from "react-redux";
+
+import store from "./configureStore";
+
+import "./App.css";
 
 export default function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <Provider store={store}>
+      <header>Oi</header>
+    </Provider>
   );
 }
