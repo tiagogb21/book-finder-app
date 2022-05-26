@@ -4,6 +4,28 @@
   align-items: center;
   background: rgb(220, 220, 220);
   text-align: center;
+  font-size: 1rem;
+}
+
+.section__search__container {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.section__search__container button {
+  width: 10vw;
+  height: 5vh;
+  border: none;
+  border-radius: 10px;
+  background: rgb(15, 15, 196);
+  color: white;
+  margin-left: 3vw;
+}
+
+.section__search__container button:hover {
 }
 
 .section__book__container {
@@ -28,16 +50,28 @@
   justify-content: space-around;
 }
 
-.article__book__info button {
-  border: none;
-  border-radius: 10px;
-  font-size: 2vw;
-  background: rgb(26, 26, 238);
-  color: rgb(255, 255, 255);
-  opacity: 0.5;
+span {
+  font-weight: bold;
 }
 
-.article__book__info button:hover {
-  opacity: 1;
-  cursor: pointer;
+.more__details {
+  width: 5vw;
+  height: 5vh;
+  color: rgb(255, 255, 255);
+  background: blue;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.arrow {
+  position: absolute;
+  padding: 5px;
+  box-shadow: 2px -2px 0 1px rgb(255, 255, 255) inset;
+  border: solid transparent;
+  border-width: 0 2px 0 2px;
+  transform: rotate(230deg);
+  margin-left: 50px;
 }

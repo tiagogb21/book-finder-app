@@ -1,0 +1,9 @@
+.general__header {
+  height: 20vh;
+  width: 100vw;
+  background: rgb(33, 156, 146);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

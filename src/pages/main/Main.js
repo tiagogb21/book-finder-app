@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, matchRoutes } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import {
@@ -12,7 +11,6 @@ import "./Main.css";
 
 export default function Home({ signIn }) {
   const [books, setBooks] = useState([]);
-  const [/* specificBook, */ setSpecificBook] = useState([]);
   const [inputSearch, setInputSearch] = useState("");
 
   const getAllBooks = async () => {
@@ -22,13 +20,10 @@ export default function Home({ signIn }) {
 
   const getBook = async (query) => {
     const getInfo = await getSpecificBookAPI(query);
-    setSpecificBook(getInfo);
+    setBooks(getInfo);
   };
 
-  const getBookByAuthor = async (query) => {
-    const getInfo = await getBookByAuthorAPI(query);
-    setSpecificBook(getInfo);
-  };
+  console.log(books);
 
   useEffect(() => {
     getAllBooks();
@@ -36,25 +31,24 @@ export default function Home({ signIn }) {
 
   return (
     <header className="header__book__container">
-      <label htmlFor="input-search">
-        <input
-          type="text"
-          id="input-search"
-          value={inputSearch}
-          onChange={({ target }) => setInputSearch(target.value)}
-        />
-      </label>
-
-      <button type="button" onClick={() => getBook(inputSearch)}>
-        Search
-      </button>
-
-      <button type="button" onClick={() => getBookByAuthor(inputSearch)}>
-        Search
-      </button>
+      <section className="section__search__container">
+        <label htmlFor="input-search">
+          <input
+            type="text"
+            id="input-search"
+            value={inputSearch}
+            onChange={({ target }) => setInputSearch(target.value)}
+          />
+        </label>
+        <button type="button" onClick={() => getBook(inputSearch)}>
+          Search
+        </button>
+      </section>
 
       <section className="section__book__container">
-        {books.length > 0 &&
+        {books.length === 0 ? (
+          <h3>Loading ...</h3>
+        ) : (
           books.map(({ id, volumeInfo }) => (
             <article key={id} className="article__book__box">
               <img
@@ -65,12 +59,19 @@ export default function Home({ signIn }) {
               />
               <article className="article__book__info">
                 <h3>{volumeInfo.title}</h3>
-                <p>Published: {volumeInfo.publishedDate}</p>
-                <p>Authors: {volumeInfo.authors}</p>
-                <Link to="/book">More Details</Link>
+                <p>
+                  <span>Published:</span> {volumeInfo.publishedDate}
+                </p>
+                <p>
+                  <span>Authors:</span> {volumeInfo.authors}
+                </p>
+                <Link className="more__details" to={`/book/${id}`}>
+                  More <span class="arrow"></span>
+                </Link>
               </article>
             </article>
-          ))}
+          ))
+        )}
       </section>
     </header>
   );

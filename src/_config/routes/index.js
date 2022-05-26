@@ -11,7 +11,7 @@ const BooksRoutes = () => {
     <Router history={history}>
       <Routes>
         <Route path="/" exact element={<Main />} />
-        <Route path="/book" exact element={<Book />} />
+        <Route path="/book/:id" exact element={<Book />} />
         {/* <Route path="*" element={<Pagina404 />} /> */}
       </Routes>
     </Router>
