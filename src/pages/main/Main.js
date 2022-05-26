@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation, matchRoutes } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
   getDataAPI,
@@ -7,11 +8,11 @@ import {
   getBookByAuthorAPI,
 } from "../../product/api";
 
-import "./Home.css";
+import "./Main.css";
 
-export default function Home() {
+export default function Home({ signIn }) {
   const [books, setBooks] = useState([]);
-  const [specificBook, setSpecificBook] = useState([]);
+  const [/* specificBook, */ setSpecificBook] = useState([]);
   const [inputSearch, setInputSearch] = useState("");
 
   const getAllBooks = async () => {
@@ -26,15 +27,8 @@ export default function Home() {
 
   const getBookByAuthor = async (query) => {
     const getInfo = await getBookByAuthorAPI(query);
-    console.log(getInfo);
     setSpecificBook(getInfo);
   };
-
-  const history = useHistory();
-
-  console.log(history);
-
-  const redirectToBook = () => {};
 
   useEffect(() => {
     getAllBooks();
@@ -73,7 +67,7 @@ export default function Home() {
                 <h3>{volumeInfo.title}</h3>
                 <p>Published: {volumeInfo.publishedDate}</p>
                 <p>Authors: {volumeInfo.authors}</p>
-                <button onClick={() => redirectToBook()}>+ Details</button>
+                <Link to="/book">More Details</Link>
               </article>
             </article>
           ))}
