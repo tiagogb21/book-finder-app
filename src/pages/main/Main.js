@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { getDataAPI } from "../../product/fetch/api";
@@ -12,6 +13,12 @@ export default function Home({ signIn }) {
     const getInfo = await getDataAPI();
     setBooks(getInfo);
   };
+
+  const changeBooks = useSelector((state) => state);
+
+  useEffect(() => {
+    setBooks(changeBooks.bookReducer.data);
+  }, [changeBooks]);
 
   useEffect(() => {
     getAllBooks();
@@ -39,7 +46,11 @@ export default function Home({ signIn }) {
                 <p>
                   <span>Authors:</span> {volumeInfo.authors}
                 </p>
-                <Link className="more__details" to={`/book/${id}`}>
+                <Link
+                  className="more__details"
+                  to={`/`} // book/${id}
+                  // onClick={booksT}
+                >
                   More <span className="arrow"></span>
                 </Link>
               </article>
