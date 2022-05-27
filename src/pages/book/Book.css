@@ -1,0 +1,17 @@
+.book__container__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.book__container__info section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.book__container__info section p {
+  margin: 1vw 0;
+}

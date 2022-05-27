@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getDataAPI } from '../../product/fetch/api';
@@ -18,6 +18,16 @@ export default function Home() {
 
   const changeBooks = useSelector((state) => state);
 
+  function addBookCreation(bookItem) {
+    return { type: 'ADD_BOOK', bookItem };
+  }
+
+  const dispatch = useDispatch();
+
+  function addBook(val) {
+    dispatch(addBookCreation(val));
+  }
+
   useEffect(() => {
     setBooks(changeBooks.bookReducer.data);
   }, [changeBooks]);
@@ -26,11 +36,20 @@ export default function Home() {
     getAllBooks();
   }, []);
 
+  const teste = (val) => {
+    addBook(val);
+  };
+
   return (
     <header className="header__book__container">
       <section className="section__book__container">
         {books.length === 0 ? (
-          <h3>Loading ...</h3>
+          <h3 style={{
+            height: '50vh', display: 'flex', justifyContent: 'center', alignItems: 'center',
+          }}
+          >
+            Loading ...
+          </h3>
         ) : (
           books.map(({ id, volumeInfo }) => (
             <article key={id} className="article__book__box">
@@ -56,8 +75,8 @@ export default function Home() {
                 </p>
                 <Link
                   className="more__details"
+                  onClick={() => teste(volumeInfo)}
                   to={`/book/${id}`}
-                  // onClick={booksT}
                 >
                   More
                   {' '}

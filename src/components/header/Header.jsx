@@ -45,22 +45,25 @@ export default function Header() {
       <h1 className="header__title">Book Finder App</h1>
       {verify && (
         <section className="section__container">
-          <label htmlFor="input-search">
-            <input
-              type="text"
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  addBooks();
-                }
-              }}
-              id="input-search"
-              onChange={({ target }) => getBook(target.value) && getBookByAuthor(target.value)}
-              placeholder="Type author, book name, subject..."
-            />
-          </label>
-          <button type="button" id="search-btn" onClick={() => addBooks()}>
-            <img src={magnifyingglass} alt="magnifying glass" />
-          </button>
+          {/* <Link to="/home">HOME</Link> */}
+          <section>
+            <label htmlFor="input-search">
+              <input
+                type="text"
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    addBooks();
+                  }
+                }}
+                id="input-search"
+                onChange={({ target }) => getBook(target.value) && getBookByAuthor(target.value)}
+                placeholder="Type author, book name, subject..."
+              />
+            </label>
+            <button type="button" id="search-btn" onClick={() => addBooks()}>
+              <img src={magnifyingglass} alt="magnifying glass" />
+            </button>
+          </section>
         </section>
       )}
     </header>
