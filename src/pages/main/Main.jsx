@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { getDataAPI } from "../../product/fetch/api";
+import { getDataAPI } from '../../product/fetch/api';
 
-import "./Main.css";
+import semimagem from '../../assets/img/semimagem.png';
 
-export default function Home({ signIn }) {
+import './Main.css';
+
+export default function Home() {
   const [books, setBooks] = useState([]);
 
   const getAllBooks = async () => {
@@ -34,24 +36,32 @@ export default function Home({ signIn }) {
             <article key={id} className="article__book__box">
               <img
                 src={
-                  volumeInfo.imageLinks && volumeInfo.imageLinks.smallThumbnail
+                  volumeInfo.imageLinks
+                    ? volumeInfo.imageLinks.smallThumbnail
+                    : semimagem
                 }
                 alt={volumeInfo.title}
               />
               <article className="article__book__info">
                 <h3>{volumeInfo.title}</h3>
                 <p>
-                  <span>Published:</span> {volumeInfo.publishedDate}
+                  <span>Published:</span>
+                  {' '}
+                  {volumeInfo.publishedDate}
                 </p>
                 <p>
-                  <span>Authors:</span> {volumeInfo.authors}
+                  <span>Authors:</span>
+                  {' '}
+                  {volumeInfo.authors}
                 </p>
                 <Link
                   className="more__details"
-                  to={`/`} // book/${id}
+                  to={`/book/${id}`}
                   // onClick={booksT}
                 >
-                  More <span className="arrow"></span>
+                  More
+                  {' '}
+                  <span className="arrow" />
                 </Link>
               </article>
             </article>

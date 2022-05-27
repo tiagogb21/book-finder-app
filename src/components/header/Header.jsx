@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
 import {
   getSpecificBookAPI,
   getBookByAuthorAPI,
-} from "../../product/fetch/api";
+} from '../../product/fetch/api';
 
-import "./Header.css";
+import './Header.css';
 
-import magnifyingglass from "../../assets/img/magnifyingglass.png";
+import magnifyingglass from '../../assets/img/magnifyingglass.png';
 
 const verify = true;
 
@@ -27,7 +27,7 @@ export default function Header() {
   };
 
   function addBookCreation(booksList) {
-    return { type: "ADD_BOOKS_LIST", booksList };
+    return { type: 'ADD_BOOKS_LIST', booksList };
   }
 
   // Recebe dados do reducer:
@@ -45,21 +45,20 @@ export default function Header() {
       <h1 className="header__title">Book Finder App</h1>
       {verify && (
         <section className="section__container">
-          <label htmlFor="">
+          <label htmlFor="input-search">
             <input
               type="text"
               onKeyPress={(e) => {
-                if (e.key === "Enter") {
+                if (e.key === 'Enter') {
                   addBooks();
                 }
               }}
-              onChange={({ target }) =>
-                getBook(target.value) && getBookByAuthor(target.value)
-              }
+              id="input-search"
+              onChange={({ target }) => getBook(target.value) && getBookByAuthor(target.value)}
               placeholder="Type author, book name, subject..."
             />
           </label>
-          <button id="search-btn" onClick={() => addBooks()}>
+          <button type="button" id="search-btn" onClick={() => addBooks()}>
             <img src={magnifyingglass} alt="magnifying glass" />
           </button>
         </section>
