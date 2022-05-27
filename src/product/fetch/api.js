@@ -1,4 +1,4 @@
-import { URL_API_KEY } from "../_environments/ignore";
+import { URL_API_KEY } from "../../_environments/ignore";
 
 const BASE_URL = `https://www.googleapis.com/books/v1/volumes?q=search-terms&key=${URL_API_KEY}`;
 

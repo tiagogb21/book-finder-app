@@ -1,9 +1,46 @@
-.general__header {
-  height: 20vh;
+.header__container {
+  height: 30vh;
   width: 100vw;
-  background: rgb(33, 156, 146);
+  font-size: 5vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/img/library.jpg");
+  background-size: contain;
+  background-position: center;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__title {
+  font-family: "Nanum Brush Script", cursive !important;
+}
+
+.section__container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.section__container label input {
+  height: 5vh;
+  width: 30vw;
+  padding-left: 1vw;
+}
+
+.section__container button {
+  height: 5vh;
+  width: 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.section__container button:hover {
+  cursor: pointer;
+}
+
+.section__container button img {
+  height: 3vh;
 }
